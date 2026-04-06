@@ -39,7 +39,7 @@ class Library:
         print(f"Available books are: {available_books}")
         return available_books
 
-    def get_all_users(self) -> int:
+    def get_all_users(self) -> list:
         "Returns all users"
         return self.__all_users
 
