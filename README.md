@@ -39,3 +39,21 @@ Bonus (Optional):
 •Track how many books or users have been created in total.
 •Add constraints (e.g., maximum 3 borrowed books per user).
 •Allow search by author or category
+
+## Installation
+
+1. To install venv -> python -m venv .venv
+2. Create requirements.txt for the dependencies -> echo . > requirements.txt
+or pip freeze > requirements.txt
+3. Add Pylint to requirements.txt
+4. Add coverage to requirements.txt
+
+## Usage
+
+1. To activate .venv -> .venv\Scripts\activate
+2. To deactivate .venv -> deactivate
+3. To install all packages from requirements.txt, run: python -m pip install -r requirements.txt
+4. To run module with pylint-> pylint .\src\string_tasks.py
+5. Run coverage -> coverage run --source=src --omit="*/init.py" -m unittest tests.test_my_math
+6. Generate html report -> coverage html
+7. To run pytest -> python -m pytest -v
