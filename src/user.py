@@ -1,6 +1,6 @@
 
 """ Module for the User class. """
-from Book import Book
+from src.book import Book
 
 
 class User:
