@@ -12,6 +12,11 @@ class User:
         self.__borrowed_books = []
         self.__borrowed_books_limit = -1 # -1 is default value for unlimited books
 
+    def __eq__(self, other) -> bool:
+        if isinstance(other, User):
+            return self.__name == other.get_name()
+        return False
+
     def get_name(self) -> str:
         """ Returns the name of the user. """
         return self.__name
