@@ -16,6 +16,13 @@ class Book:
         self.__category = category
         self.__is_available = True
 
+    def __eq__(self, other) -> bool:
+        if isinstance(other, Book):
+            return self.__title == other.get_title() and \
+                   self.__author == other.get_author() and \
+                   self.__category == other.get_category()
+        return False
+
     def get_title(self) -> str:
         """ Returns the title of the book. """
         return self.__title
