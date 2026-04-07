@@ -18,7 +18,7 @@ class Library:
         "Add new book to the library"
         if not new_book in self.__all_books:
             self.__all_books.append(new_book)
-            print(f"New book is addded {new_book.get_title}")
+            print(f"New book is addded {new_book.get_title()}")
         else:
             print(f"Book {new_book.get_title} already exists")
 
@@ -26,7 +26,7 @@ class Library:
         "Add new users"
         if not new_user in self.__all_users:
             self.__all_users.append(new_user)
-            print(f"New user is addded {new_user.get_name}")
+            print(f"New user is addded {new_user.get_name()}")
         else:
             print(f"Book {new_user.get_name} already exists")
 
@@ -36,7 +36,6 @@ class Library:
         for book in self.__all_books:
             if book.is_available:
                 available_books.append(book)
-        print(f"Available books are: {available_books}")
         return available_books
 
     def get_all_users(self) -> list:
