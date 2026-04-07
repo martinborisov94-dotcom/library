@@ -35,3 +35,30 @@ class TestBook():
         expected_available = True
         actual_available = book.is_available()
         assert actual_available == expected_available
+
+    def test_two_books_same_attributes(self):
+        "Testy two books are the same"
+        book1 = Book("The Great Gatsby", "F. Scott Fitzgerald", "Tragedy")
+        book2 = Book("The Great Gatsby", "F. Scott Fitzgerald", "Tragedy")
+        assert book1 == book2, "Books are not the same"
+
+    def test_two_books_different_category(self):
+        "Testy two books are not the same"
+        book1 = Book("The Great Gatsby", "F. Scott Fitzgerald", "Tragedy")
+        book2 = Book("The Great Gatsby", "F. Scott Fitzgerald", "Comedy")
+        assert book1 != book2, "Books are not the same"
+
+    def test_borrow_when_available_mark_as_unavailable(self):
+        """Verify borrowing book after being available and mark as unavaolable"""
+        book = Book("Hamlet", "Shakespeare", "Tragedy")
+        expected_available = True
+        actual_available = book.is_available()
+        assert expected_available == actual_available, "Book is not available"
+
+        expected_borrowed = True
+        actual_borrow = book.borrow_book()
+        assert expected_borrowed == actual_borrow, "Book is borrowed"
+
+        expected_available_after = False
+        actual_available_after = book.is_available()
+        assert expected_available_after == actual_available_after, "Book is not available"
