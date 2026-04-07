@@ -20,7 +20,7 @@ class Library:
             self.__all_books.append(new_book)
             print(f"New book is addded {new_book.get_title()}")
         else:
-            print(f"Book {new_book.get_title} already exists")
+            print(f"Book {new_book.get_title()} already exists")
 
     def register_user(self, new_user: User) -> str:
         "Add new users"
@@ -28,7 +28,7 @@ class Library:
             self.__all_users.append(new_user)
             print(f"New user is addded {new_user.get_name()}")
         else:
-            print(f"Book {new_user.get_name} already exists")
+            print(f"Book {new_user.get_name()} already exists")
 
     def get_available_books(self) -> list:
         "Return all available books in th library"
