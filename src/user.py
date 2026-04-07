@@ -34,11 +34,13 @@ class User:
             return
 
         self.__borrowed_books.append(book)
+        book.borrow_book()
 
     def remove_borrowed_book(self, book: Book) -> None:
         """ Removes a book from the list of borrowed books. """
         if book in self.__borrowed_books:
             self.__borrowed_books.remove(book)
+            book.return_book()
         else:
             print(f"Book '{book.get_title()}' is not in the list of borrowed \
                   books for user '{self.__name}'.")
