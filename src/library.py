@@ -45,3 +45,24 @@ class Library:
     def get_all_books(self) -> list:
         "Returns all books"
         return self.__all_books
+
+    def all_books_and_users(self) -> None:
+        "Track all users and books"
+        print(f"All users: {self.__all_users}")
+        print(f"All books: {self.__all_books}")
+
+    def find_book_by_author(self, author: str) -> Book:
+        """Search book by author name"""
+        for book in self.__all_books:
+            if book.get_author() == author:
+                return book
+        print(f"No book found by author {author}")
+        return None
+
+    def find_book_by_category(self, category: str) -> Book:
+        """Search book by category name"""
+        for book in self.__all_books:
+            if book.get_category() == category:
+                return book
+        print(f"No book found in category {category}")
+        return None
