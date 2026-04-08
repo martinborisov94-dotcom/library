@@ -21,7 +21,7 @@ class User:
         """ Returns the name of the user. """
         return self.__name
 
-    def get_boorrowed_books(self) -> list:
+    def get_borrowed_books(self) -> list:
         """ Returns a list of books currently borrowed by the user. """
         return self.__borrowed_books
 
