@@ -49,7 +49,7 @@ class TestBook():
         assert book1 != book2, "Books are not the same"
 
     def test_borrow_when_available_mark_as_unavailable(self):
-        """Verify borrowing book after being available and mark as unavaolable"""
+        """Verify borrowing book after being available and mark as unavailable"""
         book = Book("Hamlet", "Shakespeare", "Tragedy")
         expected_available = True
         actual_available = book.is_available()
@@ -64,7 +64,7 @@ class TestBook():
         assert expected_available_after == actual_available_after, "Book is not available"
 
     def test_sequence_of_multiple_operations(self):
-        "Test sequence of operations"
+        """Test sequence of operations"""
         book = Book("Inferno", "Dan Brown", "Tragedy")
 
         expected_available_initial = True
@@ -87,3 +87,13 @@ class TestBook():
         expected_borrow_again = True
         actual_borrow_again = book.borrow_book()
         assert actual_borrow_again == expected_borrow_again
+
+    def test_book_is_already_borrowed(self):
+        """Test case when book is not available"""
+        book = Book("A Christmas Carol", "Charles Dickens", "novella")
+        expected_not_available = False
+        book.borrow_book()
+        actual_not_available = book.borrow_book()
+        assert expected_not_available == actual_not_available, "Book is not borrowed"
+
+    # def test_eq_same_attributes(self):

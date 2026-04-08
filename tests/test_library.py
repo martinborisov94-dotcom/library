@@ -1,4 +1,4 @@
-""" Unit tests for DigitTasks class."""
+""" Unit tests for Library class."""
 
 from src.library import Library
 from src.book import Book
