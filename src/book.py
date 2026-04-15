@@ -11,41 +11,39 @@ class Book:
 
 
     def __init__(self, title: str, author: str, category: str):
-        self.__title = title
-        self.__author = author
-        self.__category = category
-        self.__is_available = True
+        self._title = title
+        self._author = author
+        self._category = category
+        self._is_available = True
 
 
     def __eq__(self, other) -> bool:
-        return self.__title == other.get_title() and \
-                self.__author == other.get_author() and \
-                self.__category == other.get_category()
+        return self._title == other.get_title() and \
+                self._author == other.get_author() and \
+                self._category == other.get_category()
 
 
     def get_title(self) -> str:
         """ Returns the title of the book. """
-        return self.__title
+        return self._title
 
     def get_author(self) -> str:
         """ Returns the author of the book. """
-        return self.__author
+        return self._author
 
     def get_category(self) -> str:
         """ Returns the category of the book. """
-        return self.__category
+        return self._category
 
     def is_available(self) -> bool:
         """ Returns True if the book is available for borrowing, False otherwise. """
-        return self.__is_available
+        return self._is_available
 
-    def borrow_book(self) -> bool:
+    def borrow_book(self) -> None:
         """ Marks the book as borrowed if it is available. """
         if self.is_available():
-            self.__is_available = False
-            return True
-        return False
+            self._is_available = False
 
     def return_book(self) -> None:
         """ Marks the book as returned and available for borrowing. """
-        self.__is_available = True
+        self._is_available = True
