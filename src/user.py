@@ -1,5 +1,7 @@
-
-""" Module for the User class. """
+"""
+Module for the User class.
+This module provides the User class which represents a user in a library management system.
+"""
 from src.book import Book
 
 

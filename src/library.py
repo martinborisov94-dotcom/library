@@ -1,5 +1,7 @@
-
-""" Module for the Library class. """
+"""
+Module for the Library class.
+This module provides the Library class which represents a library in a library management system.
+"""
 
 from src.book import Book
 from src.user import User

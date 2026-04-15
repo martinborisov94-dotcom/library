@@ -1,5 +1,8 @@
 
-""" Module for the Book class. """
+"""
+Module for the Book class.
+This module provides the Book class which represents a book in a library management system.
+"""
 
 
 class Book:
