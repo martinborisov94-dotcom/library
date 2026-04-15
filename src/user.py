@@ -41,9 +41,6 @@ class User:
         if book in self.__borrowed_books:
             self.__borrowed_books.remove(book)
             book.return_book()
-        else:
-            print(f"Book '{book.get_title()}' is not in the list of borrowed \
-                  books for user '{self.__name}'.")
 
     def set_borrowed_books_limit(self, limit: int) -> None:
         """ Sets the limit for the number of books a user can borrow. """

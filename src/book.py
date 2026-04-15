@@ -15,8 +15,7 @@ class Book:
         self.__author = author
         self.__category = category
         self.__is_available = True
-        print(f"Book created: {self.__title} by {self.__author} \
-               in category {self.__category} created.")
+
 
     def __eq__(self, other) -> bool:
         if isinstance(other, Book):
