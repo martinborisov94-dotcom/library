@@ -10,7 +10,7 @@ class User:
     def __init__(self, name: str):
         self._name = name
         self._borrowed_books = []
-        self._borrowed_books_limit = -1 # -1 is default value for unlimited books
+        self._borrowed_books_limit = 0
 
     def __eq__(self, other) -> bool:
         return self._name == other.get_name()
@@ -23,22 +23,17 @@ class User:
         """ Returns a list of books currently borrowed by the user. """
         return self._borrowed_books
 
-    def add_borrowed_book(self, book: Book) -> None:
+    def add_borrowed_book(self, book_to_borrow: Book) -> None:
         """ Adds a book to the list of borrowed books. """
-        if self._borrowed_books_limit != -1 and \
-              len(self._borrowed_books) >= self._borrowed_books_limit:
-            print(f"User '{self._name}' has reached the borrowing limit  \
-                  of {self._borrowed_books_limit} books.")
-            return
+        if book_to_borrow.is_available():
+            self._borrowed_books.append(book_to_borrow)
+            book_to_borrow.borrow_book()
 
-        self._borrowed_books.append(book)
-        book.borrow_book()
-
-    def remove_borrowed_book(self, book: Book) -> None:
+    def remove_borrowed_book(self, book_to_return: Book) -> None:
         """ Removes a book from the list of borrowed books. """
-        if book in self._borrowed_books:
-            self._borrowed_books.remove(book)
-            book.return_book()
+        if book_to_return in self._borrowed_books:
+            self._borrowed_books.remove(book_to_return)
+            book_to_return.return_book()
 
     def set_borrowed_books_limit(self, limit: int) -> None:
         """ Sets the limit for the number of books a user can borrow. """
