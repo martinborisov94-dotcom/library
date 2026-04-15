@@ -1,5 +1,8 @@
 
-""" Module for the Book class. """
+"""
+Module for the Book class.
+This module provides the Book class which represents a book in a library management system.
+"""
 
 
 class Book:
@@ -11,43 +14,62 @@ class Book:
 
 
     def __init__(self, title: str, author: str, category: str):
-        self.__title = title
-        self.__author = author
-        self.__category = category
-        self.__is_available = True
-        print(f"Book created: {self.__title} by {self.__author} \
-               in category {self.__category} created.")
+        self._title = title
+        self._author = author
+        self._category = category
+        self._is_available = True
+
 
     def __eq__(self, other) -> bool:
-        if isinstance(other, Book):
-            return self.__title == other.get_title() and \
-                   self.__author == other.get_author() and \
-                   self.__category == other.get_category()
-        return False
+        return self._title == other.get_title() and \
+                self._author == other.get_author() and \
+                self._category == other.get_category()
+
 
     def get_title(self) -> str:
-        """ Returns the title of the book. """
-        return self.__title
+        """Return the title of this book.
+
+        Returns:
+            str: The book title as a non-empty string.
+        """
+        return self._title
 
     def get_author(self) -> str:
-        """ Returns the author of the book. """
-        return self.__author
+        """Return the author of this book.
+
+        Returns:
+            str: The author of the book as a non-empty string.
+        """
+        return self._author
 
     def get_category(self) -> str:
-        """ Returns the category of the book. """
-        return self.__category
+        """Return the category of this book.
+
+        Returns:
+            str: The category of the book as a non-empty string.
+        """
+        return self._category
 
     def is_available(self) -> bool:
-        """ Returns True if the book is available for borrowing, False otherwise. """
-        return self.__is_available
+        """Return True if the book is available for borrowing, False otherwise.
 
-    def borrow_book(self) -> bool:
-        """ Marks the book as borrowed if it is available. """
+        Returns:
+            bool: True if the book is available, False otherwise.
+        """
+        return self._is_available
+
+    def borrow_book(self) -> None:
+        """Marks the book as borrowed if it is available.
+
+        This method sets the book's availability status to False if it is currently available.
+        """
         if self.is_available():
-            self.__is_available = False
-            return True
-        return False
+            self._is_available = False
 
     def return_book(self) -> None:
-        """ Marks the book as returned and available for borrowing. """
-        self.__is_available = True
+        """Marks the book as returned and available for borrowing.
+
+        This method sets the book's availability status to True, indicating
+        that it is available for borrowing.
+        """
+        self._is_available = True

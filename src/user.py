@@ -1,5 +1,7 @@
-
-""" Module for the User class. """
+"""
+Module for the User class.
+This module provides the User class which represents a user in a library management system.
+"""
 from src.book import Book
 
 
@@ -8,43 +10,62 @@ class User:
 
 
     def __init__(self, name: str):
-        self.__name = name
-        self.__borrowed_books = []
-        self.__borrowed_books_limit = -1 # -1 is default value for unlimited books
+        self._name = name
+        self._borrowed_books = []
+        self._borrowed_books_limit = 0
 
     def __eq__(self, other) -> bool:
-        if isinstance(other, User):
-            return self.__name == other.get_name()
-        return False
+        return self._name == other.get_name()
 
     def get_name(self) -> str:
-        """ Returns the name of the user. """
-        return self.__name
+        """Return the name of the user.
+
+        Returns:
+            str: The name of the user as a string.
+        """
+        return self._name
 
     def get_borrowed_books(self) -> list:
-        """ Returns a list of books currently borrowed by the user. """
-        return self.__borrowed_books
+        """Return a list of books currently borrowed by the user.
 
-    def add_borrowed_book(self, book: Book) -> None:
-        """ Adds a book to the list of borrowed books. """
-        if self.__borrowed_books_limit != -1 and \
-              len(self.__borrowed_books) >= self.__borrowed_books_limit:
-            print(f"User '{self.__name}' has reached the borrowing limit  \
-                  of {self.__borrowed_books_limit} books.")
-            return
+        Returns:
+            list: A list of books currently borrowed by the user.
+        """
+        return self._borrowed_books
 
-        self.__borrowed_books.append(book)
-        book.borrow_book()
+    def add_borrowed_book(self, book_to_borrow: Book) -> None:
+        """Add a book to the list of borrowed books if it is available.
 
-    def remove_borrowed_book(self, book: Book) -> None:
-        """ Removes a book from the list of borrowed books. """
-        if book in self.__borrowed_books:
-            self.__borrowed_books.remove(book)
-            book.return_book()
-        else:
-            print(f"Book '{book.get_title()}' is not in the list of borrowed \
-                  books for user '{self.__name}'.")
+        Args:
+            book_to_borrow (Book): The book to borrow.
+
+        Returns:
+            None
+        """
+        if book_to_borrow.is_available():
+            self._borrowed_books.append(book_to_borrow)
+            book_to_borrow.borrow_book()
+
+    def remove_borrowed_book(self, book_to_return: Book) -> None:
+        """Remove a book from the list of borrowed books and mark it as returned.
+
+        Args:
+            book_to_return (Book): The book to return.
+
+        Returns:
+            None
+        """
+        if book_to_return in self._borrowed_books:
+            self._borrowed_books.remove(book_to_return)
+            book_to_return.return_book()
 
     def set_borrowed_books_limit(self, limit: int) -> None:
-        """ Sets the limit for the number of books a user can borrow. """
-        self.__borrowed_books_limit = limit
+        """Set the limit for the number of books a user can borrow.
+
+        Args:
+            limit (int): The maximum number of books the user can borrow.
+
+        Returns:
+            None
+        """
+        self._borrowed_books_limit = limit
