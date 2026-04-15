@@ -18,11 +18,10 @@ class Book:
 
 
     def __eq__(self, other) -> bool:
-        if isinstance(other, Book):
-            return self.__title == other.get_title() and \
-                   self.__author == other.get_author() and \
-                   self.__category == other.get_category()
-        return False
+        return self.__title == other.get_title() and \
+                self.__author == other.get_author() and \
+                self.__category == other.get_category()
+
 
     def get_title(self) -> str:
         """ Returns the title of the book. """
