@@ -27,26 +27,49 @@ class Book:
 
 
     def get_title(self) -> str:
-        """ Returns the title of the book. """
+        """Return the title of this book.
+
+        Returns:
+            str: The book title as a non-empty string.
+        """
         return self._title
 
     def get_author(self) -> str:
-        """ Returns the author of the book. """
+        """Return the author of this book.
+
+        Returns:
+            str: The author of the book as a non-empty string.
+        """
         return self._author
 
     def get_category(self) -> str:
-        """ Returns the category of the book. """
+        """Return the category of this book.
+
+        Returns:
+            str: The category of the book as a non-empty string.
+        """
         return self._category
 
     def is_available(self) -> bool:
-        """ Returns True if the book is available for borrowing, False otherwise. """
+        """Return True if the book is available for borrowing, False otherwise.
+
+        Returns:
+            bool: True if the book is available, False otherwise.
+        """
         return self._is_available
 
     def borrow_book(self) -> None:
-        """ Marks the book as borrowed if it is available. """
+        """Marks the book as borrowed if it is available.
+
+        This method sets the book's availability status to False if it is currently available.
+        """
         if self.is_available():
             self._is_available = False
 
     def return_book(self) -> None:
-        """ Marks the book as returned and available for borrowing. """
+        """Marks the book as returned and available for borrowing.
+
+        This method sets the book's availability status to True, indicating
+        that it is available for borrowing.
+        """
         self._is_available = True
